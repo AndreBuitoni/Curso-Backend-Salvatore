@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/AndreBuitoni/Curso-Backend-Salvatore/issues"
   },
-  "homepage": "https://github.com/AndreBuitoni/Curso-Backend-Salvatore#readme"
+  "homepage": "https://github.com/AndreBuitoni/Curso-Backend-Salvatore#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
