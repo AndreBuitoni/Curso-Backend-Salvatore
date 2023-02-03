@@ -1,0 +1,18 @@
+RESUMO DA AULA 03/02/2023
+
+Instalamos o pacote NODEMON para que o nosso programa atualize automaticamente.
+
+Aprendemos o que é um ENDPOINT. É um caminho que crimos na URL do nosso programa.
+
+Instalamos a extensão Thunder Client e aprendemos qual o objetivo dessa extensão.
+
+Verbos HTTP. Métodos HTTP. Get. Post. Put. Delete. Patch.
+Get - Obter Informações
+Post - Criar Informações
+Put - Atualizar Informações (completa)
+Patch - Atualizar informações (parcial)
+Delete - Remove informações
+
+CRUD - Create / Read / Update / Delete
+Todo dado possui 4 operações básicas.
+
