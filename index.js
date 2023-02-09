@@ -1,42 +1,56 @@
 const express = require("express");
-const app = express();
+const { MongoClient } = require("mongodb");
 
-// O que vier no body da requisição, está em JSON
-app.use(express.json());
+const DB_URL = "mongodb://127.0.0.1:27017";
+const DB_NAME = "curso-ocean-backend";
 
-// Endpoint / -> Hello World
-app.get("/", function (req, res) {
-  res.send("Hello, World!");
-});
+async function main() {
+  //Conexão com o Banco de Dados
+  console.log("Conectando com o banco de dados...");
+  const client = await MongoClient.connect(DB_URL);
+  console.log("Banco de dados conectado com sucesso!");
 
-// Endpoint /oi -> Olá Mundo
-app.get("/oi", function (req, res) {
-  res.send("Olá, Mundo!");
-});
+  const app = express();
 
-// Lista de Informações
-const itens = ["Margarita", "Cosmopolitan", "Tequila Sunrise"];
+  // O que vier no body da requisição, está em JSON
+  app.use(express.json());
 
-// CRUD -> Lista de Informações
+  // Endpoint / -> Hello World
+  app.get("/", function (req, res) {
+    res.send("Hello, World!");
+  });
 
-// Endpoint Read All -> [GET] /item
-app.get("/item", function (req, res) {
-  res.send(itens);
-});
+  // Endpoint /oi -> Olá Mundo
+  app.get("/oi", function (req, res) {
+    res.send("Olá, Mundo!");
+  });
 
-// Endpoint Read Single (By ID) -> [GET] /item/:id
-app.get("/item/:id", function (req, res) {
-  const id = req.params.id;
-  const item = itens[id - 1];
-  res.send(item);
-});
+  // Lista de Informações
+  const itens = ["Margarita", "Cosmopolitan", "Tequila Sunrise"];
 
-//Endpoint Create -> [POST] /item
-app.post("/item", function (req, res) {
-  // console.log(req.body);
-  const item = req.body;
-  itens.push(item.nome);
-  res.send("Item criado com sucesso!");
-});
+  // CRUD -> Lista de Informações
 
-app.listen(3000);
+  // Endpoint Read All -> [GET] /item
+  app.get("/item", function (req, res) {
+    res.send(itens);
+  });
+
+  // Endpoint Read Single (By ID) -> [GET] /item/:id
+  app.get("/item/:id", function (req, res) {
+    const id = req.params.id;
+    const item = itens[id - 1];
+    res.send(item);
+  });
+
+  //Endpoint Create -> [POST] /item
+  app.post("/item", function (req, res) {
+    // console.log(req.body);
+    const item = req.body;
+    itens.push(item.nome);
+    res.send("Item criado com sucesso!");
+  });
+
+  app.listen(3000);
+}
+
+main();
