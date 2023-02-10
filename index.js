@@ -2,7 +2,8 @@ const express = require("express");
 const { MongoClient, ObjectId } = require("mongodb");
 
 // localhost ou 127.0.0.1
-const DB_URL = "mongodb://127.0.0.1:27017";
+// const DB_URL = "mongodb://127.0.0.1:27017";
+const DB_URL = "mongodb+srv://abuitoni:ziff8L1H4OMF5sz5@cluster0.kkdrk8k.mongodb.net";
 const DB_NAME = "curso-ocean-backend";
 
 async function main() {
@@ -67,6 +68,12 @@ async function main() {
 
     res.send(body);
   });
+
+  // Endpoint DELETE -> [DELETE] /item/:id
+  // Exercício:
+  // pesquisar sobre a operação de remover itens
+  // implementar o endpoint de delete
+  // realizar a operação de excluir item
 
   app.listen(3000);
 }
