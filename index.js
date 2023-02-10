@@ -54,6 +54,15 @@ async function main() {
     res.send(item);
   });
 
+  // Endpoint UPDATE -> [PUT] /item/:item
+  app.put("/item/:id", function (req, res) {
+    const id = req.params.id;
+    const body = req.body;
+
+    console.log(id, body);
+    res.send("Deu bom!");
+  });
+
   app.listen(3000);
 }
 
