@@ -16,3 +16,7 @@ Delete - Remove informações
 CRUD - Create / Read / Update / Delete
 Todo dado possui 4 operações básicas.
 
+API REST
+É uma forma padronizada de criar uma API.
+
+Criamos um Endpoint do tipo READ ALL, utilizando o método GET. Testamos no Thunder Client e a lista de drinks apareceu corretamente.
