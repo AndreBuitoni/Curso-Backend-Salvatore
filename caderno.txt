@@ -26,3 +26,9 @@ ziff8L1H4OMF5sz5
 
 LINK DA BASE DE DADOS - STRING DE CONEXÃO
 mongodb+srv://abuitoni:ziff8L1H4OMF5sz5@cluster0.kkdrk8k.mongodb.net
+----------------------------------------------------------------------
+ANOTAÇÕES AULA 16/02/2023
+
+-> Criamos no backend o Endpoint DELETE.
+-> Criamos uma pasta backend e jogamos todos os arquivos lá.
+-> Criamos o projeto frontend com o VITE + REACT
