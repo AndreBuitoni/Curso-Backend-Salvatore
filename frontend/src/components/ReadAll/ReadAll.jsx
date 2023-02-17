@@ -1,5 +1,5 @@
 import "./ReadAll.css"
-import "../Card/Card"
+import Card from "../Card/Card"
 
 // Mock Items (exatamente a mesma estrutura que o back traria)
 // Isso facilita o trabalho aqui no Front, para conseguir estruturar
