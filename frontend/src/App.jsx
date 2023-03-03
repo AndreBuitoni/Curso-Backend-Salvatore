@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      {/* <ReadAll /> */}
+      <ReadAll />
       <ReadById />
     </div>
   );
