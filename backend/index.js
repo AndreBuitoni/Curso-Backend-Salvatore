@@ -1,5 +1,6 @@
 const express = require("express");
 const { MongoClient, ObjectId } = require("mongodb");
+const cors = require("cors");
 
 // localhost ou 127.0.0.1
 // const DB_URL = "mongodb://127.0.0.1:27017";
@@ -16,6 +17,9 @@ async function main() {
 
   const app = express();
 
+  // Habilita o CORS
+  app.use(cors());
+
   // O que vier no body da requisição, está em JSON
   app.use(express.json());
 
@@ -29,8 +33,9 @@ async function main() {
     res.send("Olá, mundo!");
   });
 
-  // Lista de Informações
-  const itens = ["Margarita", "Cosmopolitan", "Tequila Sunrise"];
+  // Lista de informações
+  const itens = ["Rick Sanchez", "Morty Smith", "Summer Smith"];
+  //              0               1              2
 
   // CRUD -> Lista de informações
 
@@ -51,37 +56,40 @@ async function main() {
   app.post("/item", async function (req, res) {
     // console.log(req.body);
     const item = req.body;
-    await collection.insertOne(item)
+    await collection.insertOne(item);
     res.send(item);
   });
 
-  // Endpoint UPDATE -> [PUT] /item/:item
+  // Endpoint Update -> [PUT] /item/:id
   app.put("/item/:id", async function (req, res) {
     const id = req.params.id;
     const body = req.body;
 
     // console.log(id, body);
-    await collection.updateOne (
-      { _id: new ObjectId(id) },
-      { $set: body }
-    );
+
+    await collection.updateOne({ _id: new ObjectId(id) }, { $set: body });
 
     res.send(body);
   });
 
-  // Endpoint DELETE -> [DELETE] /item/:id
+  // Endpoint Delete -> [DELETE] /item/:id
   // Exercício:
-  // pesquisar sobre a operação de remover itens
-  // implementar o endpoint de delete
-  // realizar a operação de excluir item
+  // - pesquisar sobre a operação de remover itens
+  // - implementar o endpoint de delete
+  // - realizar a operação de excluir item
 
-  app.delete("/item/:id", async function(req, res) {
-    const id = req.params.id
-    await collection.deleteOne({ _id: new ObjectId(id) })
-    res.send("Registro removido com sucesso!")
-  })
+  app.delete("/item/:id", async function (req, res) {
+    const id = req.params.id;
 
-  app.listen(3000);
+    await collection.deleteOne({ _id: new ObjectId(id) });
+
+    res.send("Registro removido com sucesso!");
+  });
+
+  const port = process.env.PORT || 3000;
+  app.listen(port, function () {
+    console.log("Servidor rodando na porta: " + port);
+  });
 }
 
 main();
